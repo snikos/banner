@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0"><!-- MOBILE -->
+    
+    <meta name="description" content="online testing of knowledge of countries around the world">
+    <meta name="keywords" content="country world flag testing knowledge wisdom geography learn ensign">
+    <meta name="author" content="">
+    <meta name="robots" content="">
+    <title>The test is of the knowleges of country flags</title>
+    <link rel="icon" href="/favicon.png">
+
+    <link rel="stylesheet" href="country/country.css" media="screen">
+
+  </head>
+  <body class="flag_bigger">
+    <div class="container row">
+      <div class="col w1-1">
+        <div id="setting_game">
+          <form class="uk-form-horizontal uk-margin-large">
+            <div class="uk-margin">
+              <label class="uk-form-label" for="level_game">Choose a level of the test:</label>
+              <div class="uk-form-controls">
+                <select id="level_game" class="uk-select">
+                  <option value="2" selected>easy</option>
+                  <option value="4">middle</option>
+                  <option value="6">hard</option>
+                  <option value="8">the hell</option>
+                </select>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div id="boxQuest" class="prh"></div>
+        <div id="message">Click to one image!</div>
+      </div>
+      <div class="col w1-1" id="flag_block">
+      </div>
+      <div class="col w1-1">
+        <button type="button" id="nextStep" class="btn">Next step</button>
+        <hr class="clear"/>
+      </div>
+      <div class="row">
+        <div class="col w1-2 w1-1-p w1-2-t">
+          <div class="cross_block">
+            <table id="plusWord" class="col w1-2 green_table">
+              <thead><tr><td class="text_center"><b>Win step</b></td></tr><thead>
+              <tbody></tbody>
+            </table>
+            <table id="minusWord" class="col w1-2 green_table">
+              <thead><tr><td class="text_center"><b>Lose step</b></td></tr></thead>
+              <tbody></tbody>
+            </table>
+            <hr class="clear"/>
+          </div>
+        </div>
+        <div class="col w1-2 w1-1-p w1-2-t">
+          <table class="green_table">
+            <tr><td rowspan="5">x</td><td>Total steps:</td><td data-id="setting_allsteps">-</td></tr>
+            <tr><td>Step:</td><td data-id="test_step">-</td></tr>
+            <tr><td>Winnings:</td><td data-id="winning_step">-</td></tr>
+            <tr><td>Losses:</td><td data-id="losses_step">-</td></tr>
+            <tr><td>Test level:</td><td data-id="setting_curlevel">-</td></tr>
+            <tr><td colspan="3" data-id="florida_man">-</td></tr>
+          </table>
+          <hr class="clear"/>
+        </div>
+      </div>
+      <hr class="clear"/>
+      <section id="hint-flag" class="col w1-1">
+        <h5 id="hint-open">Hints</h5>
+        <p>Afghanistan African-Union Aland Albania Alderney Algeria American-Samoa Andorra Angola Anguilla Antarctica Antigua-&-Barbuda Arab-League Argentina Armenia Aruba ASEAN Australia Austria Azerbaijan</p>
+        <p>Bahamas Bahrain Bangladesh Barbados Basque-Country Belarus Belgium Belize Benin Bermuda Bhutan Bolivia Bonaire-Sint-Eustatius-and-Saba Bosnia-&-Herzegovina Botswana Bouvet Brazil British-Indian-Ocean-Territory Brunei Bulgaria Burkina-Faso Burundi</p>
+        <p>Cambodja Cameroon Canada Cape-Verde CARICOM Catalonia Cayman-Islands Central-African-Republic Chad Chile China Christmas CIS Cocos-(Keeling) Colombia Commonwealth Comoros Congo-Brazzaville Congo-Kinshasa(Zaire) Cook-Islands Costa-Rica Cote-d'Ivoire Croatia Cuba Curacao Cyprus Czech-Republic</p>
+        <p>Denmark Djibouti Dominica Dominican-Republic</p>
+        <p>Ecuador Egypt El-Salvador England Equatorial-Guinea Eritrea Estonia Ethiopia European-Union</p>
+        <p>Falkland-(Malvinas) FAO Faroes Fiji Finland France French-Guiana French-Southern-and-Antarctic-Lands</p>
+        <p>Gabon Galicia Gambia Georgia Germany Ghana Gibraltar Greece Greenland Grenada Guadeloupe Guatemala Guam Guernsey Guinea Guinea-Bissau Guyana</p>
+        <p>Haiti Heard-Island-and-McDonald Honduras Hong-Kong Hungary</p>
+        <p>IAEA Iceland IHO India Indonezia Iran Iraq Ireland Islamic-Conference Isle-of-Man Israel Italy</p>
+        <p>Jamaica Japan Jersey Jordan</p>
+        <p>Kazakhstan Kenya Kiribati Kosovo Kuwait Kyrgyzstan</p>
+        <p>Laos Latvia Lebanon Lesotho Liberia Libya Liechtenstein Lithuania Luxembourg</p>
+        <p>Macao Macedonia Madagascar Malawi Malaysia Maldives Mali Malta Marshall-Islands Martinique Mauritania Mauritius Mayotte Mexico Micronesia Moldova Monaco Mongolia Montenegro Montserrat Morocco Mozambique Myanmar(Burma)</p>
+        <p>Namibia NATO Nauru Nepal Netherlands Netherlands-Antilles New-Caledonia New-Zealand Nicaragua Niger Nigeria Niue Norfolk Northern-Cyprus Northern-Ireland Northern-Mariana North-Korea Norway</p>
+        <p>OAS OECD Olimpic-Movement Oman OPEC</p>
+        <p>Pakistan Palau Palestine Panama Papua-New-Guinea Paraguay Peru Philippines Pitcairn Poland Portugal Puerto-Rico</p>
+        <p>Qatar Quebec</p>
+        <p>Red-Cross Reunion Romania Russian-Federation Rwanda</p>
+        <p>Saint-Barthelemy Saint-Helena Saint-Lucia Saint-Martin(French) Saint-Pierre-and-Miquelon Samoa San-Marino Sao-Tome-&-Principe Saudi-Arabia Scotland Senegal Serbia(Yugoslavia) Seychelles Sierra-Leone Singapore Sint-Maarten Slovakia Slovenia Solomon-Islands Somalia Somaliland South-Africa Southern-Sudan South-Georgia-and-South-Sandwich South-Korea Spain Sri-Lanka St-Kitts-&-Nevis St-Vincent-&-the-Grenadines Sudan Suriname Svalbard-and-Jan-Mayen Swaziland Sweden Switzerland Syria</p>
+        <p>Tahiti(French-Polinesia) Taiwan Tajikistan Tanzania Thailand Timor-Leste Togo Tokelau Tonga Trinidad-&-Tobago Tristan-da-Cunha Tunisia Turkey Turkmenistan Turks-and-Caicos-Islands Tuvalu</p>
+        <p>Uganda Ukraine UNESCO UNICEF United-Arab-Emirates United-Kingdom(Great-Britain) United-Nations United-States-Minor-Outlying United-States-of-America(USA) Uruguay Uzbekistan</p>
+        <p>Vanutau Vatican-City Venezuela Viet-Nam Virgin-Islands-British Virgin-Islands-US</p>
+        <p>Wales Wallis-and-Futuna Western-Sahara WHO WTO Yemen Zambia Zimbabwe</p>
+        <small>Inferno</small>
+      </section>
+    </div>
+    <!-- UIkit 3.5.4 | https://www.getuikit.com | (c) 2014 - 2020 YOOtheme | MIT License  -->
+    <!-- https://www.youtube.com/watch?v=cS6Hi2Avoww -->
+    <script src="country/jquery-2.2.4.min.js"></script>
+    <script src="country/metka.js"></script>
+    <script src="country/init.js"></script>
+  </body>
+</html>
