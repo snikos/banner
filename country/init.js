@@ -555,7 +555,6 @@ var lastEventListenerFor = function(el, cb) {
     }
   };
 }
-/************************/
 
 /* experiment with comma */
 function exprComma(){
