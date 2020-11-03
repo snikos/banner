@@ -1,4 +1,4 @@
-/*@import url('reset.css');*/
+/* styles for banner | https://github.com/snikos/banner | exam */
 @import url('prof-grid.css');
 @import url('uikit.min.css');
 
@@ -254,6 +254,10 @@ body {
 	background-color: rgb(76, 175, 80);
   color: #fff;
 }
+.goon_message{
+  background-color: dodgerblue;
+  color: #fff;
+}
 [data-id=florida_man]{
   font-family: cursive;
   color: rgb(76, 175, 80);
@@ -264,23 +268,23 @@ body {
   font-family: monospace;
 }
 
-#hint-flag{
+#hintFlag{
   border-top: 1px solid #fff;
   overflow: hidden;
   height: 120px;
 }
-#hint-flag.open{
+#hintFlag.open{
   overflow: visible;
   height: auto;
 }
-#hint-open{
+#hintOpen{
   cursor: pointer;
   position: relative;
   margin: 0 auto;
   font-size: 16px;
   line-height: 1.4;
 }
-#hint-open:before{
+#hintOpen:before{
   content: "open";
   font-size: 1em;
   padding: 0px 12px;
@@ -293,7 +297,7 @@ body {
 .open #hint-open:before{
   content: "close";
 }
-#hint-flag p{
+#hintFlag p{
   background-color: #fff;
   padding: 12px;
   margin: 2px auto;
