@@ -1,4 +1,28 @@
 "use strict";
+
+if (!Array.prototype.shuffle) {
+  Array.prototype.shuffle = function() {
+    /* var. 1: well good */
+    for (var i = this.length - 1; i > 0; i--) {
+      var num = Math.floor(Math.random() * (i + 1));
+      var d = this[num];
+      this[num] = this[i];
+      this[i] = d;
+    }
+    return this;
+    
+    /* var. 2: well work */
+    /*var m = this.length, t, i;
+    while (m) {
+      i = Math.floor(Math.random() * m--);
+      t = this[m];
+      this[m] = this[i];
+      this[i] = t;
+    }
+    return this;*/
+  }
+};
+
 var FlagEffects = (function (muta) {
 
     init();
@@ -145,7 +169,6 @@ var FlagEffects = (function (muta) {
       var ran_num = muta.split('~\n');//metka.split('~\n');
       var ran_png = Math.round( Math.random() * ran_num.length );
       var ran_flag = ran_num[ ran_png ];
-      //console.log(ran_flag);
       return ran_flag;
     };
 
@@ -221,10 +244,9 @@ var FlagEffects = (function (muta) {
         if( _arr.filter( function(idx){ return idx===ranName } ) ){
           _arr.push(ranName);
         }
+
         /*for expr*/
         //$.inArray(ranName, _arr);
-        //console.log('Uni: '+ $.inArray(ranName, _arr));
-
 
         var uni = function(aa){
           var res=[];
@@ -234,7 +256,6 @@ var FlagEffects = (function (muta) {
           return res;
         };
         _arr = uni(_arr);
-        //console.log( _arr );
 
         if( _arr.length >= lenFlags ){
           return _arr;
@@ -244,15 +265,16 @@ var FlagEffects = (function (muta) {
         return _arr;
       };
       var usArray = uniqueCountries();
-      //console.log('usArray: '+ usArray);
 
       $('#message').text('---');
       $(selector, document).each( function(idx, el){
 
         //var alt = (usArray[idx].split('.')[0]).trim();
         //var olt = mixAlt(alt);
-        var url = ('country/128/'+usArray[idx]);
 
+        var url = ('country/128/'+usArray[idx]);
+        var urlBase64 = ('country/128/'+ window.btoa(usArray[idx]));
+        //console.log(urlBase64);
 
         getBaseUri(url, function(data){
           var quest = function(tt){
@@ -265,15 +287,22 @@ var FlagEffects = (function (muta) {
           };
           $(el).attr(attros);
           $(el).data('answer', alt);
-          //console.log(idx +'|'+ rightData)
+
           if ( idx === rightData )
           {
             $('body').data('right_ant', alt);
             $('#boxQuest').html( quest(alt) );
           }
         });
-        //console.log('Dota: '+ $('body').data('right_ant'));//first load -> undefined
 
+        var shot = [];
+        $('#flag_block div').each( function(idx, el){
+          shot.push(el);
+        });
+        shot.shuffle();
+        $.each( shot, function(idx, el){
+          $('#flag_block').append(el);
+        });
       });
     };
 
@@ -303,9 +332,8 @@ var FlagEffects = (function (muta) {
       //$(this).addClass('axe');
       $('#nextStep').prop('disabled', false);
       $('.flag', document).each( function(idx, el){
-        var a = $(el).data('answer');//$(el).attr('alt');
-        //console.log( 'el-data: '+ $(el).data('answer') );
-        //if( !$(el).hasClass('axe') ) $(el).addClass('silent')
+        var a = $(el).data('answer');
+
         if( curData === a ){
           var name = $(el).data('answer'), cls = '';
           ( curAlt === name ) ? cls = 'cls-honor' : cls = 'cls-loser';
@@ -533,9 +561,7 @@ var lastEventListenerFor = function(el, cb) {
 function exprComma(){
   var code = hintFlag.firstChild.nextSibling.nodeValue;
   var cobra = $(':root', document).data('cobra');
-  console.log(cobra);
-  //console.log(code === 'cobrascript');//false
-  return null;
+  return 'maybe next time';
 }
 
 })(metka);
