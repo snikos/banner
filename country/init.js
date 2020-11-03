@@ -557,6 +557,7 @@ var lastEventListenerFor = function(el, cb) {
 }
 /************************/
 
+<<<<<<< .mine
 /* experiment with comma */
 function exprComma(){
   var code = hintFlag.firstChild.nextSibling.nodeValue;
@@ -564,4 +565,17 @@ function exprComma(){
   return 'maybe next time';
 }
 
+
+
+=======
+/* experiment with comma */
+function exprComma(){
+  var code = hintFlag.firstChild.nextSibling.nodeValue;
+  var cobra = $(':root', document).data('cobra');
+  console.log(cobra);
+  //console.log(code === 'cobrascript');//false
+  return null;
+}
+
+>>>>>>> .theirs
 })(metka);
