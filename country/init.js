@@ -556,29 +556,11 @@ var lastEventListenerFor = function(el, cb) {
   };
 }
 
-<<<<<<< .mine
-/* experiment with comma */
+
 function exprComma(){
   var code = hintFlag.firstChild.nextSibling.nodeValue;
   var cobra = $(':root', document).data('cobra');
   return 'maybe next time';
 }
 
-
-
-=======
-/* experiment with comma */
-function exprComma(){
-  var code = hintFlag.firstChild.nextSibling.nodeValue;
-  var cobra = $(':root', document).data('cobra');
-<<<<<<< HEAD
-  return 'maybe next time';
-=======
-  console.log(cobra);
-  //console.log(code === 'cobrascript');//false
-  return null;
->>>>>>> ce20f2dbdb32c3e8a0fd44fb82781e358ef9cbe3
-}
-
->>>>>>> .theirs
 })(metka);
