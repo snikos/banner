@@ -18,7 +18,7 @@ var FlagEffects = (function (muta) {
         "test_step":"0"
       };
       var objSets = {
-        "setting_allsteps":"10",
+        "setting_allsteps":"4",
         "setting_curlevel":"2",
         "setting_alltests":"0"
       };
@@ -36,6 +36,8 @@ var FlagEffects = (function (muta) {
       userLevel( workStorage('lsFlags', 'get', 'test_step'), workStorage('lsFlags', 'get', 'winning_step'));
 
       $('#nextStep').prop('disabled', true);
+
+      exprComma();
     };
 
     function update(){
@@ -125,8 +127,8 @@ var FlagEffects = (function (muta) {
         });
       var button = $('<a>', {
         'href': '#',
-        'class': 'next_game btn',
-        'html': 'Start next game'
+        'class': 'next_game uk-button uk-button-default',
+        'html': 'Start next round'
       });
       var stats_ul = $('<table>', {
         'class': 'green_table table_list'
@@ -169,9 +171,11 @@ var FlagEffects = (function (muta) {
       switch( num_lvl ){
         case"2": lvl = 'easy';
         break;
-        case"3": lvl = 'middle';
+        case"4": lvl = 'middle';
         break;
-        case"4": lvl = 'hard';
+        case"6": lvl = 'hard';
+        break;
+        case"8": lvl = 'the hell';
         break;
         default: lvl = 'easy';
       }
@@ -190,20 +194,20 @@ var FlagEffects = (function (muta) {
     }
 
     function woodoo(wd){
-      var _w = wd;
+      var gtm = ['mishmash','doodle','humbug','hodgeponge','willy-nilly','gibberish','dabble'];
+      var roundFight = Math.round( Math.random() * (gtm['length']-1) );
+      var _w = gtm[roundFight];
       var ns = '';
       $.each(_w.split(''), function(idx, el){
         _w.replace( el, function(lol){
           (idx%2===0) ? ns += lol.toUpperCase() : ns += lol.toLowerCase();
         });
-        ns = ns.replace( ns.substr(0,4), 'Duck' );
       });
       var hobana = ns[ns.length-1].toUpperCase();
-      if( hobana === 'A' ) ns = ns + 'mo';
-      if( hobana === 'O' ) ns = ns + 's';
-      if( hobana === 'C' ) ns = ns + 'os';
-      if( hobana === 'N' ) ns = ns + 'jan';
-      if( hobana === '-' ) ns = ns + 'lol';
+      if( hobana === 'G' ) ns = ns + 'er';
+      if( hobana === 'E' ) ns = ns + 'r';
+      if( hobana === 'H' ) ns = 'Ahtung('+ns+')';
+      if( hobana === 'Y' ) ns = ns + '-waffen!';
       return ns;
     }
 
@@ -340,17 +344,25 @@ var FlagEffects = (function (muta) {
       textLevel();
 
       if( new_sg >= new_tg ){
-        $('#plusWord, #minusWord').find('tbody').empty();
-        nextGame( $('body') );
+        //$('#plusWord, #minusWord').find('tbody').empty();
+        //nextGame( $('body') );
+        /*var tplResult = $('<a>', {
+          'class': 'next_game btn',
+          'href' : '#',
+          'html' : 'Start next round'
+        });*/
+        $('#nextStep').prop('disabled', true);
+        $('#message').addClass('goon_message').html('Click a button to see <a href="#" id="seeYourResult" class="uk-button uk-button-default"><b>your result</b></a> or to play <a href="#" class="next_game uk-button uk-button-default"><b> next round.</b></a>');
       }
+    }
+
+    function goOnNext(){
+      $('#plusWord, #minusWord').find('tbody').empty();
+      nextGame( $('body') );
     }
 
     function whichThisCountry(boxQuest, boxForm){
       setFlag('.flag');
-      //var quest = function(tt){
-        //return 'Select a flag of <b>"'+tt+'"</b>';
-      //};
-      //$('#boxQuest').html( quest($('body').data('right_ant')) );
     }
 
     /* Events */
@@ -367,10 +379,6 @@ var FlagEffects = (function (muta) {
       dieDuck('flag','duck');
       return false;
     });
-
-    /*$('#ngame').on('click', function(){
-      nextGame( $('body') );
-    });*/
 
     $(document).on('click', '.flag', decision);
 
@@ -408,6 +416,7 @@ var FlagEffects = (function (muta) {
   $(document).on('click', '.next_game', function(event){
     event.preventDefault();
     //var value = +workStorage('lsSets', 'get', 'setting_alltests');
+    $('#plusWord, #minusWord').find('tbody').empty();
     $('#flag_block').removeClass('mirror');
     $('#message').attr('class','');
     removeLS();
@@ -415,8 +424,13 @@ var FlagEffects = (function (muta) {
     init();
   });
 
-  $(document).on('click', '#hint-open', function(){
-    $('#hint-flag').toggleClass('open');
+  $(document).on('click', '#hintOpen', function(){
+    $('#hintFlag').toggleClass('open');
+    return false;
+  });
+
+  $(document).on('click', '#seeYourResult', function(){
+    goOnNext();
     return false;
   });
 
@@ -462,7 +476,7 @@ var FlagEffects = (function (muta) {
       };
 
 /***************************/
-    /* v1. transition hack */
+/* v1. transition hack */
 function transitionEndsOnce($dom, pname, callback) {
   var tick = Date.now();
   $dom.on('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', function(event) {
@@ -475,13 +489,13 @@ function transitionEndsOnce($dom, pname, callback) {
   });
 }
 
-    /* v.2 transition hack */
+/* v.2 transition hack */
 var getValues = function( str ){
   return str
     .replace(/[A-Z]/gi, '')
     .split(', ')
     .map(parseFloat);
-};
+}
 var getMaxTransitionProp = function(el){
   var style = window.getComputedStyle(el);
   var props = style.transitionProperty.split(', ');
@@ -504,7 +518,7 @@ var getMaxTransitionProp = function(el){
   }).i;
 
   return props[maxIndex];
-};
+}
 var lastEventListenerFor = function(el, cb) {
   var lastProp = getMaxTransitionProp(el);
   return function(e) {
@@ -512,7 +526,16 @@ var lastEventListenerFor = function(el, cb) {
       cb(e);
     }
   };
-};
+}
 /************************/
+
+/* experiment with comma */
+function exprComma(){
+  var code = hintFlag.firstChild.nextSibling.nodeValue;
+  var cobra = $(':root', document).data('cobra');
+  console.log(cobra);
+  //console.log(code === 'cobrascript');//false
+  return null;
+}
 
 })(metka);
