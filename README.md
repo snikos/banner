@@ -1,3 +1,5 @@
+<div><img src="banner.jpg" alt="Test Flags Countries around the world"/></div>
+
 ## Banner
 
 ### Desc
