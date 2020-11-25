@@ -43,6 +43,12 @@ body {
   position: relative;
   padding-top: 10px;
 }
+#flag_block:after{
+  content: "";
+  display: block;
+  width: 100%;
+  clear: both;
+}
 
 /*
 #flag_block .col:before{
